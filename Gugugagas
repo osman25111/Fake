@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C3.AI - YARED BAHARU</title>
+    <style>
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #0ff; }
+            50% { text-shadow: 0 0 20px #fff, 0 0 30px #0ff; }
+            100% { text-shadow: 0 0 5px #fff, 0 0 10px #0ff; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0f2b;
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #121a42;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #00ffea;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .active-section {
+            display: block;
+        }
+
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #121a42;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            border-top: 2px solid #00ffea;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .nav-item:hover {
+            background: #008cff;
+            transform: scale(1.1);
+        }
+
+        .package-card {
+            background: #1a2448;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px auto;
+            width: 90%;
+            max-width: 500px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 1px solid #008cff;
+        }
+
+        .package-card:nth-child(3) { border-color: #ffaa00 }
+        .package-card:nth-child(4) { border-color: #00ff88 }
+        .package-card:nth-child(5) { border-color: #ff00ff }
+
+        .package-card:hover {
+            transform: scale(1.02);
+            background: #008cff22;
+        }
+
+        .telebirr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .telebirr-content {
+            background: #121a42;
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid #00ffea;
+            text-align: center;
+            width: 90%;
+            max-width: 350px;
+        }
+
+        .payment-header {
+            background: #1a2448;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .telebirr-number {
+            font-size: 20px;
+            letter-spacing: 1px;
+            color: #00ffea;
+            margin: 10px 0;
+        }
+
+        .verification-code {
+            background: #0a0f2b;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 2px solid #008cff;
+        }
+
+        #paymentCode {
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .code-instruction {
+            color: #ff5555;
+            margin: 10px 0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🔥 C3.AI DASHBOARD</h1>
+        <p class="owner-name" style="animation: glow 2s infinite;">YARED BAHARU</p>
+        <p>ID: 679187245 <span style="background:gold;padding:5px;border-radius:5px;">VIP0</span></p>
+    </header>
+
+    <!-- HOME SECTION -->
+    <section id="home" class="section active-section">
+        <div class="package-card" onclick="showPayment('WEB-8', 800)">
+            <h3>🔌 WEB-8</h3>
+            <p>💵 Price: 800 Br</p>
+            <p>📆 Validity: 25 Days</p>
+            <p>💰 Total Income: 1,400 Br</p>
+        </div>
+
+        <div class="package-card" onclick="showPayment('WEB-25', 2500)">
+            <h3>⚡ WEB-25</h3>
+            <p>💵 Price: 2,500 Br</p>
+            <p>📆 Validity: 50 Days</p>
+            <p>💰 Total Income: 5,000 Br</p>
+        </div>
+
+        <div class="package-card" onclick="showPayment('WEB-35', 3500)">
+            <h3>🚀 WEB-35</h3>
+            <p>💵 Price: 3,500 Br</p>
+            <p>📆 Validity: 60 Days</p>
+            <p>💰 Total Income: 7,000 Br</p>
+        </div>
+
+        <div class="package-card" onclick="showPayment('WEB-80', 8000)">
+            <h3>💎 WEB-80</h3>
+            <p>💵 Price: 8,000 Br</p>
+            <p>📆 Validity: 90 Days</p>
+            <p>💰 Total Income: 16,000 Br</p>
+        </div>
+
+        <div class="package-card" onclick="showPayment('WEB-180', 18000)">
+            <h3>🔥 WEB-180</h3>
+            <p>💵 Price: 18,000 Br</p>
+            <p>📆 Validity: 120 Days</p>
+            <p>💰 Total Income: 36,000 Br</p>
+        </div>
+    </section>
+
+    <!-- BALANCE SECTION -->
+    <section id="balance" class="section">
+        <div class="package-card">
+            <h2>💰 Total Balance: 9,999,999.00 Br</h2>
+            <button onclick="withdraw()" style="background:#00ffea;color:#000;">Withdraw</button>
+            <button onclick="showCustomPayment()" style="background:#008cff;">Recharge</button>
+        </div>
+    </section>
+
+    <!-- RECORDS SECTION -->
+    <section id="records" class="section">
+        <div class="package-card">
+            <h3>📜 Transaction History</h3>
+            <p>2024-03-15: +800 Br (WEB-8)</p>
+            <p>2024-03-14: +2500 Br (WEB-25)</p>
+            <p>2024-03-13: +3500 Br (WEB-35)</p>
+        </div>
+    </section>
+
+    <!-- PROFILE SECTION -->
+    <section id="profile" class="section">
+        <div class="package-card">
+            <h3>👑 YARED BAHARU</h3>
+            <p>Level: VIP0</p>
+            <p>Total Earned: 9,999,999 Br</p>
+            <p>Joined: January 2025</p>
+        </div>
+    </section>
+
+    <!-- TELEBIRR MODAL -->
+    <div id="telebirrModal" class="telebirr-modal">
+        <div class="telebirr-content">
+            <div class="payment-header">
+                <h2>📱 TELEBIRR NUMBER</h2>
+                <div class="telebirr-number">
+                    09 44 885 00
+                </div>
+            </div>
+
+            <div class="verification-code">
+                <h3>🔑 Payment Code</h3>
+                <div id="paymentCode">0000 0000</div>
+                <p class="code-instruction">
+                    ⚠️ PUT THIS CODE IN "PAYMENT REASON"
+                </p>
+            </div>
+
+            <div style="text-align:left;margin:15px 0;">
+                <h3>📌 How to Pay:</h3>
+                <ol style="padding-left:20px;">
+                    <li>Open Telebirr</li>
+                    <li>Send EXACT AMOUNT</li>
+                    <li>Use code as reason</li>
+                    <li>Complete payment</li>
+                </ol>
+            </div>
+
+            <button onclick="closePayment()" style="background:#00ffea;color:#000;width:100%;padding:8px;">
+                I Understand - Close
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="nav-bar">
+        <div class="nav-item" onclick="showSection('home')">🏠 Home</div>
+        <div class="nav-item" onclick="showSection('balance')">💰 Balance</div>
+        <div class="nav-item" onclick="showSection('records')">📜 Records</div>
+        <div class="nav-item" onclick="showSection('profile')">👑 Profile</div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(sec => {
+                sec.classList.remove('active-section');
+            });
+            document.getElementById(sectionId).classList.add('active-section');
+        }
+
+        function generatePaymentCode() {
+            return Math.floor(10000000 + Math.random() * 90000000)
+                .toString().replace(/(\d{4})(\d{4})/, '$1 $2');
+        }
+
+        function showPayment(package, amount) {
+            const code = generatePaymentCode();
+            document.getElementById('paymentCode').textContent = code;
+            document.getElementById('telebirrModal').style.display = 'flex';
+            
+            localStorage.setItem('currentPayment', JSON.stringify({
+                package: package,
+                amount: amount,
+                code: code.replace(/\s/g, ''),
+                timestamp: Date.now()
+            }));
+
+            setInterval(() => {
+                alert(`Checking payment for code: ${code}`);
+            }, 120000);
+        }
+
+        function closePayment() {
+            document.getElementById('telebirrModal').style.display = 'none';
+        }
+
+        function withdraw() {
+            alert("Withdrawal request sent to 094488500!");
+        }
+
+        function showCustomPayment() {
+            const amount = prompt("Enter recharge amount:");
+            if(amount) showPayment('CUSTOM', amount);
+        }
+
+        window.onload = () => showSection('home');
+    </script>
+</body>
+</html>
